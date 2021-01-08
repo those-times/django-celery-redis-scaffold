@@ -4,10 +4,10 @@ ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV dev
 ENV DOCKER_CONTAINER 1
 
-COPY ./requirements.txt /var/app/requirements.txt
-RUN pip install -r /var/app/requirements.txt
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip install -r /usr/src/app/requirements.txt
 
-COPY . /var/app/
-WORKDIR /var/app/
+COPY . /usr/src/app/
+WORKDIR /usr/src/app/
 
 EXPOSE 8000

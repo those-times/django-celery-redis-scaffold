@@ -5,9 +5,9 @@ services:
     image: "redis:alpine"
   web:
     build: ./core
-    command: bash -c "python /var/app/manage.py migrate --noinput && python /var/app/manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python /usr/src/app/manage.py migrate --noinput && python /usr/src/app/manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./core:/var/app
+      - ./core:/usr/src/app
     ports:
       - 8000:8000
     depends_on:
@@ -16,6 +16,6 @@ services:
     build: ./core
     command: celery -A core worker -l info
     volumes:
-      - ./core:/var/app
+      - ./core:/usr/src/app
     depends_on:
       - redis
